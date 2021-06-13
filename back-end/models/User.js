@@ -8,6 +8,7 @@ const UserSchema=mongoose.Schema({
     datebirth: {
         "type": "date",
     }   ,
+    selectedFile:String,
    // governorate:String
 })
 module.exports=mongoose.model("user-auth",UserSchema)
