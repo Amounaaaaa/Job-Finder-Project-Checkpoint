@@ -6,6 +6,11 @@ const PostSchema = mongoose.Schema({
         type:mongoose.Types.ObjectId,
         ref:"user-auth"
     },
+    categorie:{
+        type:mongoose.Types.ObjectId,
+        ref:"categorie",
+
+    },
     title: String,
     description: String,
      created_at: {

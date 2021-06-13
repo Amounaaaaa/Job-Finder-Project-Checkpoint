@@ -6,7 +6,11 @@ const { body, validationResult } = require('express-validator');
 var bcrypt = require('bcryptjs');
 const jwt=require('jsonwebtoken');
 require('dotenv').config()
+
+
+
 app.use(express.json());// for parsing application/json
+
 router.post('/', [
     // username must be an email
     body('firstname',"Firstname must contain alphabetic letters ").isAlpha(),

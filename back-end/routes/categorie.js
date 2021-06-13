@@ -21,7 +21,7 @@ router.post('/',(req,res)=>{
 
 })
 //**Get All categories***//
-router.get('/',(req,res)=>{
+router.get('/all',(req,res)=>{
     Categorie.find()
         .then(categories=>res.send(categories))
         .catch((err)=>{
@@ -31,8 +31,8 @@ router.get('/',(req,res)=>{
         })
 })
 //** Get categorie by id ****//
-router.get('/categorie/:id',(req,res)=>{
-    Categorie.find({_id:req.params})
+router.get('/:id',(req,res)=>{
+    Categorie.find({_id:req.params.id})
 
         .then((categorie)=>res.status(200).json(categorie))
         // .send(posts))

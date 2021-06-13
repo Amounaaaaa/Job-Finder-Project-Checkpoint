@@ -42,6 +42,26 @@ router.get('/all',(req,res)=>{
 
         })
 })
+
+/* Add posts with category */
+router.post('/AddOffre/:id',(req,res)=>{
+    let newPost=new Post({...req.body,categorie:req.params.id})
+    newPost.save()
+        .then(post=>res.status(200).send(post))
+        .catch((err)=> {
+                console.error(err.message)
+                res.status(500).send({errors: [{msg: "Server Error"}]})
+            }
+        )
+
+})
+
+
+
+
+
+
+
 ////////////////////////////////////////////////////////
 
 
