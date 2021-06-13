@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {loadUser} from "../actions/authActions";
 import '../css/profile.css'
 import {Container, Row} from "react-bootstrap";
+import moment from "moment"
 
 const Profile = () => {
     const auth=useSelector(state=>state.auth)
@@ -22,14 +23,40 @@ const Profile = () => {
                         <div className="container1">
                             <div className="all flex-row">
                                 <div className="menu flex-column">
-                                    {/*<div className="flex-row label-wrapper">*/}
-                                    {/*    <img src="https://i.ibb.co/crgCrWT/instagram.png"/>*/}
-                                    {/*    <h3 className="insta-writing">Instagram</h3>*/}
-                                    {/*</div>*/}
-                                    <div className="profil-img"></div>
+
+
+
+                                    <div className="container">
+                                        <img  style={{boxShadow: '0 0 98px 6px rgba(0, 0, 0, 0.2)',
+                                            borderRadius: '50%'
+                                        }}
+                                              src={auth.user.selectedFile}/>
+                                        {/* camera icon start  -------------*/}
+                                        <div style={{marginLeft: '10px'}}>
+                                            <i style={{boxShadow: '0 0 98px 6px rgba(0, 0, 0, 0.2)',
+                                                borderRadius: '50%'
+                                            }}
+                                                onClick={console.log('cc')} className="fa fa-camera-retro fa-2x"></i>
+                                        </div>
+                                        {/* camera icon start  -----------*/}
+                                    </div>
+                                    <br></br><br></br><br></br><br></br>
+
                                     <div className="profil-info">
+                                        {/* online icon here */}
+                                        {/*<img style={{'width':'31px'}} src={"/assets/img/logo/online.jpeg"}/>*/}
+                                        {/* online icon here end -----------*/}
+
+                                        <link href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+                                              rel="stylesheet"/>
+
+
+
+                                        <h2 className="name">{auth.user.lastname}</h2>
                                         <h2 className="name">{auth.user.firstname}</h2>
+
                                         <h2 className="name">{auth.user.email}</h2>
+                                        <h2 className="name">{moment(auth.user.datebirth).subtract(10, 'days').calendar()}</h2>
                                         <div className="numbers">
                                             <div className="post">
                                                 <p>Post</p>
@@ -98,17 +125,17 @@ const Profile = () => {
                                     <div className="form has-search">
                                         <input className="text" type="search" placeholder="Search" name="search"/>
                                         <span className="searchIcon">
-         <img src="https://i.ibb.co/sqFgRq8/search.png"/>
-       </span>
+                                     <img src="https://i.ibb.co/sqFgRq8/search.png"/>
+                                   </span>
                                         <span className="micro">
-         <img src="https://i.ibb.co/HNx8Xty/microphone.png"/>
-       </span>
+                                     <img src="https://i.ibb.co/HNx8Xty/microphone.png"/>
+                                   </span>
                                     </div>
                                     <div className="cover-post">
                                         <button className="button post-new">Create New Post</button>
                                         <span className="plus">
-       <img src="https://i.ibb.co/0YG23j8/plus-symbol.png"/>
-       </span>
+                                       <img src="https://i.ibb.co/0YG23j8/plus-symbol.png"/>
+                                       </span>
                                     </div>
                                     <div className="mail-heart">
                                         <div className="icon1">
@@ -152,7 +179,6 @@ const Profile = () => {
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div className="featured">
                                                 <div className="featured-header">
                                                     <h2 className="featured-stories"> Latest Feed</h2>
@@ -175,14 +201,12 @@ const Profile = () => {
                                                             <img
                                                                 src="https://images.unsplash.com/photo-1532347922424-c652d9b7208e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60"/>
                                                         </div>
-
                                                         <div className="img-galery">
                                                             <img
                                                                 src="https://images.unsplash.com/photo-1414609245224-afa02bfb3fda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60"/>
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <div className="last-body">
                                                     <div className="galery-wrapper">
                                                         <div className="img-galery">
@@ -200,10 +224,7 @@ const Profile = () => {
                                                     </div>
                                                 </div>
                                                 <div className="loader"></div>
-
                                             </div>
-
-
                                         </div>
                                         <div className="last-right">
                                             <img
@@ -250,55 +271,10 @@ const Profile = () => {
                                         </div>
                                     </div>
                             </div>
-
                         </div>
-
                     </div>
                     <div>
                         <div className="main-container">
-                            {/*/!*HEADER *!/*/}
-                            {/*<header className="block">*/}
-                            {/*</header>*/}
-                            {/*/!*LEFT-CONTAINER*!/*/}
-                            {/*/!*MIDDLE-CONTAINER *!/*/}
-                            {/*<div className="middle-container container">*/}
-                            {/*    <div className="profile block">*/}
-                            {/*        <a className="add-button" href="#28"/><span className="icon entypo-plus scnd-font-color"/>*/}
-                            {/*        <div className="profile-picture big-profile-picture clear">*/}
-                            {/*            <img width="150px" alt="Anne Hathaway picture" src={"/assets/img/logo/logooo.png"}/>*/}
-                            {/*            /!*<i className="bi bi-camera"></i>*!/*/}
-                            {/*            /!*<i className="bi bi-camera-fill"></i>*!/*/}
-
-                            {/*        </div>*/}
-                            {/*        <div >*/}
-                            {/*            <i  onClick={Hello} className="fas fa-camera"></i>*/}
-
-                            {/*        </div>*/}
-                            {/*        {auth.user && <h1 className="user-name">{auth.user.firstname} {auth.user.lastname}</h1>}*/}
-                            {/*        <div className="profile-description">*/}
-                            {/*            <p className="scnd-font-color"/>{auth.user.email}*/}
-                            {/*        </div>*/}
-                            {/*        <ul className="profile-options horizontal-list">*/}
-                            {/*            <li><a className="comments" href="#40"/><p/><span*/}
-                            {/*                className="icon fontawesome-comment-alt scnd-font-color"></span>+216 {auth.user.phone}*/}
-                            {/*            </li>*/}
-                            {/*            <li><a className="views" href="#41"/><p/><span*/}
-                            {/*                className="icon fontawesome-eye-open scnd-font-color"></span>*/}
-                            {/*                /!*841*!/*/}
-                            {/*            </li>*/}
-                            {/*            <li><a className="likes" href="#42"/><p/><span*/}
-                            {/*                className="icon fontawesome-heart-empty scnd-font-color"></span>*/}
-                            {/*                /!*49*!/*/}
-                            {/*            </li>*/}
-                            {/*        </ul>*/}
-                            {/*    </div>*/}
-                            {/*    /!*<div className="weather block clear">*!/*/}
-                            {/*    /!*    <h2 className="titular"><span*!/*/}
-                            {/*    /!*        className="icon entypo-location"></span><strong>CLUJ-NAPOCA</strong>/RO</h2>*!/*/}
-
-                            {/*    /!*</div>*!/*/}
-
-                            {/*</div>*/}
                         </div>
                         {/*end main-container */}
                     </div>

@@ -18,7 +18,7 @@ const Inscription = ({history}) => {
         phone: "",
         email: "",
         password: "",
-        datebirth: new Date()
+        datebirth:''
     })
     const [infoemp, setInfoemp] = useState({
         firstname: "",
@@ -51,12 +51,12 @@ const Inscription = ({history}) => {
         e.preventDefault() //utiliser avec le form et pour eviter le chargement de page par le navigateur
         dispatch(registerEmployer(infoemp))
     }
-    const [value, setValue] = useState(new Date());/*
+    const [value, setValue] = useState();/*
 Get date from datePicker start
 */
-    var momentObj = moment(value, 'MM-DD-YYYY');
+   /* var momentObj = moment(value, 'MM-DD-YYYY');
     var momentString = momentObj.format('YYYY-MM-DD').split("T00"); // 2016-07-15
-    console.log("date", momentString)
+    console.log("date", momentString)*/
     const registerNow = (e) => {
         e.preventDefault() //utiliser avec le form et pour eviter le chargement de page
         dispatch(registerUser(info))
@@ -74,7 +74,7 @@ Get date from datePicker end
             (+e.target.value) !== NaN && setInfo({...info, [e.target.name]: e.target.value})
             console.log(+e.target.value)
         } else
-            setInfo({...info, [e.target.name]: e.target.value, datebirth: momentString})
+            setInfo({...info, [e.target.name]: e.target.value})
     }
     const handlechangeSelect = (e) => {
         //  console.log(e.target.value)
@@ -116,6 +116,7 @@ Get date from datePicker end
                 </Row>
             </Container>
             <Container style={{width: '800px', marginTop: '100px', background: '#e8e8e4'}}>
+
                 {/*---------------------Candidat  form Start ---------------*/}
                 {candidat && <Row>
                     <div className="w3-container">
@@ -171,6 +172,8 @@ Get date from datePicker end
                                className="form-control" id="exampleinput  onFocus={()=>setErrors(null)} Email1"
                                placeholder="Enter your phone number" value={info.phone}
                                onChange={handlechange}/><br></br>
+                        <FileBase type="file" multiple={false} onDone={({base64}) => setInfo({...info, selectedFile: base64})}></FileBase>
+
                         <button className="custom-btn btn-1">Save now</button>
                         <br></br>
                         <br></br>

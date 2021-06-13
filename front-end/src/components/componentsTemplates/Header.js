@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import React, {useState} from 'react'
 import {Button, Modal} from 'react-bootstrap';
 import '../../css/header.css';
 // import {BrowserRouter as Router,Route,Switch}from 'react-router-dom'
@@ -59,8 +59,8 @@ const Header = () => {
                                                     <div className=" d-none f-right d-lg-block">
                                                         {auth.isAuth ? (
                                                             <>
-                                                                <Link to="/profile"><a href="#"
-                                                                                       className="btn head-btn1">Profile</a></Link>
+                                                                {/*<Link to="/profile"><a href="#"*/}
+                                                                {/*                       className="btn head-btn1">Profile</a></Link>*/}
                                                                 <Link onClick={() => dispatch(logoutUser())}>Log out<a href="#" className="btn head-btn1"></a></Link>
 
                                                                 {/*<Link onClick={() => dispatch(logoutUser())}>Log out</Link>*/}
@@ -87,34 +87,9 @@ const Header = () => {
                                                 </ul>
                                             </nav>
                                         </div>
-                                        {/*<div className=" d-none f-right d-lg-block">*/}
-                                        {/*    {auth.isAuth ? (*/}
-                                        {/*        <>*/}
-                                        {/*            <Link to="/profile"><a href="#"*/}
-                                        {/*                                       className="btn head-btn1">Profile</a></Link>*/}
-                                        {/*            <Link onClick={() => dispatch(logoutUser())}>Log out</Link>*/}
-                                        {/*        </>*/}
-                                        {/*    ) : (*/}
-                                        {/*        <>*/}
-                                        {/*            /!*<Link to="/register"><a href="#"*!/*/}
-                                        {/*            /!*                        className="btn head-btn1">Register</a></Link>*!/*/}
-                                        {/*            <Link to="/inscription"><a href="#"*/}
-                                        {/*                                       className="btn head-btn1">Register</a></Link>*/}
-
-                                        {/*            <Link to="/login"><a href="#"*/}
-                                        {/*                                 className="btn head-btn1">Login</a></Link>*/}
-                                        {/*            /!*<Link to="/profile">*!/*/}
-                                        {/*            /!*    <a href="#"*!/*/}
-                                        {/*            /!*                       className="btn head-btn1">Profile</a></Link>*!/*/}
-                                        {/*        </>*/}
-                                        {/*    )*/}
-                                        {/*    }*/}
-                                        {/*</div>*/}
                                     </div>
                                 </div>
-
                                 {/*   -------------------------------------------- Home  Routes End --------------------------------------------- */}
-
                             </div>
                             {/*// <!-- Collapsible wrapper -->*/}
                             {/*// <!-- Right elements -->*/}
@@ -135,19 +110,25 @@ const Header = () => {
 
 
                                 {/*// <!-- Avatar -->*/}
-                                { auth.isAuth && <a
+                                { auth.isAuth &&
+
+                                    <a
                                     class="dropdown-toggle d-flex align-items-center hidden-arrow"
                                     href="#"
                                     id="navbarDropdownMenuLink"
                                     role="button"
                                     data-mdb-toggle="dropdown"
                                     aria-expanded="false"
-                                >
-                                    <Link to="/profile">
+                                    >
+
+                                       <div><img style={{'marginLeft':'10px','width':'15px'}} src={"/assets/img/logo/online.svg"}/></div>
+                                        <Link to="/profile">
                                         <img src="https://mdbootstrap.com/img/new/avatars/2.jpg"
                                              className="rounded-circle" height="25" alt="" loading="lazy"/>
                                     </Link>
-                                </a>}
+                                </a>
+
+                                }
                             </div>
                             {/*// <!-- Right elements -->*/}
                         </div>
@@ -160,59 +141,7 @@ const Header = () => {
                         <div className="container">
                             <div className="row align-items-center">
                                 <div className="col-lg-3 col-md-2">
-                                    {/*<div className="logo">*/}
-                                    {/*    <a href="index.html"/>*/}
-                                    {/*    <img src="assets/img/logo/logo.png" alt=""/>*/}
-                                    {/*</div>*/}
                                 </div>
-                          {/*//////////////////// Nav 1 End     ////////////////////////  */}
-                                {/*<Router>*/}
-                                {/*<div className="col-lg-9 col-md-9">*/}
-                                {/*    <div className="menu-wrapper">*/}
-                                {/*        <div className="main-menu">*/}
-                                {/*            <nav className="d-none d-lg-block">*/}
-                                {/*                <ul id="navigation">*/}
-                                {/*                    <Link to="/">*/}
-                                {/*                        <li><a href="index.html">Offres</a></li>*/}
-                                {/*                    </Link>*/}
-                                {/*                    <Link style={{textDecoration: 'none'}} to="/cv">*/}
-                                {/*                        <li><a>Create CV</a></li>*/}
-                                {/*                    </Link>*/}
-                                {/*                    <li><Link style={{textDecoration: 'none'}} to="/ranking">*/}
-                                {/*                        <li><a href="#">Rankings</a></li>*/}
-                                {/*                    </Link>*/}
-                                {/*                    </li>*/}
-                                {/*                </ul>*/}
-                                {/*            </nav>*/}
-                                {/*        </div>*/}
-                                {/*        <div className=" d-none f-right d-lg-block">*/}
-                                {/*            {auth.isAuth ? (*/}
-                                {/*                <>*/}
-                                {/*                    <Link to="/profile"><a href="#"*/}
-                                {/*                                           className="btn head-btn1">Profile</a></Link>*/}
-                                {/*                    <Link onClick={() => dispatch(logoutUser())}>Log out</Link>*/}
-                                {/*                </>*/}
-                                {/*            ) : (*/}
-                                {/*                <>*/}
-                                {/*                    /!*<Link to="/register"><a href="#"*!/*/}
-                                {/*                    /!*                        className="btn head-btn1">Register</a></Link>*!/*/}
-                                {/*                    <Link to="/inscription"><a href="#"*/}
-                                {/*                                               className="btn head-btn1">Register</a></Link>*/}
-
-                                {/*                    <Link to="/login"><a href="#"*/}
-                                {/*                                         className="btn head-btn1">Login</a></Link>*/}
-                                {/*                    /!*<Link to="/profile">*!/*/}
-                                {/*                    /!*    <a href="#"*!/*/}
-                                {/*                    /!*                       className="btn head-btn1">Profile</a></Link>*!/*/}
-                                {/*                </>*/}
-                                {/*            )*/}
-                                {/*            }*/}
-                                {/*        </div>*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
-
-
-
                             </div>
                         </div>
                     </div>
