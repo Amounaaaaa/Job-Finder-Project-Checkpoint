@@ -7,6 +7,9 @@ export const REGISTER_Emp_FAIl="REGISTER_Emp_FAIl"
 //login types:
 export const LOGIN_SUCCESS="LOGIN_SUCCESS"
 export const LOGIN_FAIl="LOGIN_FAIl"
+//login  Employer types:
+export const LOGIN_EMPLOYER_SUCCESS="LOGIN_EMPLOYER_SUCCESS"
+export const LOGIN_EMPLOYER_FAIl="LOGIN_EMPLOYER_FAIl"
 //load user:
 export const LOAD_USER_SUCCESS="LOAD_USER_SUCCESS"
 export const LOAD_USER_FAIl="LOAD_USER_FAIl"

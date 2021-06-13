@@ -18,7 +18,7 @@ import Profile from "./pages/Profile";
 import Inscription from "./pages/Inscription";
 import Daterr from "./pages/Daterr";
 import CreateCV from "./pages/CreateCV";
-import OffreByCat from "./pages/OffreByCat";
+import Posts from './pages/Posts';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -38,10 +38,7 @@ ReactDOM.render(
                    <Route exact path="/profile" component={Profile} />
                    <Route exact path="/date" component={Daterr} />
                    <PrivateRoute  exact path="/cv" component={CreateCV} />
-                   <Route path="/categorie/:id" render={(props)=> <OffreByCat{...props}  />}></Route>
-
-
-
+                   <Route path="/categorie/:id" render={(props)=> <Posts{...props}  />}></Route>
                </Switch>
            </BrowserRouter>
        </Provider>

@@ -10,13 +10,10 @@ import {
     REGISTER_Emp_FAIl,
     LOAD_EMPLOYER_SUCCESS,
     LOAD_EMPLOYER_FAIL,
-    GET_CATEGORIE_SUCCESS, GET_CATEGORIE_FAIL, GET_CATEGORIE_LOADING
+
 } from './types'
 import axios from "axios";
 import setTocken from "../setTocken";
-// import {setTocken} from '../setTocken'
-
-
 export const registerUser=(info)=>dispatch=>{
     axios.post('/register',info)
         .then(res=>dispatch({
@@ -39,25 +36,7 @@ export const registerEmployer=(infoemp)=>dispatch=>{
             payload:err.response.data.errors,
         }))
 }
-export const getcategories=()=>dispatch=>{
 
-    dispatch({
-        type:GET_CATEGORIE_LOADING
-    })
-
-
-    axios.get('/categorie')
-        .then(res=>dispatch({
-            type:GET_CATEGORIE_SUCCESS,
-            payload:res.data
-            }))
-            .catch(err=>dispatch({
-                type:GET_CATEGORIE_FAIL,
-                payload:err.response.data.errors
-            }))
-
-
-}
 ///////LOAD USER:
 export const loadUser=()=>dispatch=>{
     setTocken()
@@ -86,14 +65,14 @@ export const loadEmployer=()=>dispatch=>{
 }
 
 export const loginUser=data=>dispatch=>{
-    console.log("data====>",data)
+    console.log("data in action ====>",data)
     axios.post('/login',data)
         .then(res=>
             dispatch({
-            type:LOGIN_SUCCESS,
-            payload:res.data
+                type:LOGIN_SUCCESS,
+                payload:res.data
 
-        }))
+            }))
         .catch(err=>dispatch({
             type:LOGIN_FAIl,
             payload:err.response.data.errors

@@ -9,9 +9,10 @@ const Profile = () => {
     const dispatch=useDispatch()
     const Hello=()=>{
         console.log("hello ..................")
-    }// useEffect(()=>{
-    //     dispatch(loadUser())
-    // },[]);
+    }
+    useEffect(()=>{
+        dispatch(loadUser())
+    },[]);
 
     return (
         <Container>
@@ -28,8 +29,7 @@ const Profile = () => {
                                     <div className="profil-img"></div>
                                     <div className="profil-info">
                                         <h2 className="name">{auth.user.firstname}</h2>
-                                        <h3 className="city">Date birth : {((auth.user.datebirth))}
-                                        </h3>
+                                        <h2 className="name">{auth.user.email}</h2>
                                         <div className="numbers">
                                             <div className="post">
                                                 <p>Post</p>

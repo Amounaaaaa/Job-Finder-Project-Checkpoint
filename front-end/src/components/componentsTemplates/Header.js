@@ -59,8 +59,8 @@ const Header = () => {
                                                     <div className=" d-none f-right d-lg-block">
                                                         {auth.isAuth ? (
                                                             <>
-                                                                {/*<Link to="/profile"><a href="#"*/}
-                                                                {/*                       className="btn head-btn1">Profile</a></Link>*/}
+                                                                <Link to="/profile"><a href="#"
+                                                                                       className="btn head-btn1">Profile</a></Link>
                                                                 <Link onClick={() => dispatch(logoutUser())}>Log out<a href="#" className="btn head-btn1"></a></Link>
 
                                                                 {/*<Link onClick={() => dispatch(logoutUser())}>Log out</Link>*/}
@@ -71,7 +71,8 @@ const Header = () => {
                                                                 {/*                        className="btn head-btn1">Register</a></Link>*/}
                                                                 <Link to="/inscription"><a href="#"
                                                                                            className="btn head-btn1">Register</a></Link>
-
+                                                                {/*<Link to={`/inscription/${id}`}><a href="#"*/}
+                                                                {/*                           className="btn head-btn1">Register</a></Link>*/}
 
                                                                 <Link to="/login"><a href="#"
                                                                                      className="btn head-btn1">Login</a></Link>

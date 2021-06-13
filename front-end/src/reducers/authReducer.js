@@ -13,11 +13,11 @@ import {
 const  initialState={
     token:localStorage.getItem('token'),
     user:null,
-    categories:null,
+   // categories:null,
     isAuth:false,
     errors:null,
     connectedAs:'',
-    isLoading:false
+   // isLoading:false
     // hasRole:null
 }
 
@@ -28,13 +28,30 @@ export const redirectToHome = history => () => {
     switch (action.type){
 
         case LOAD_EMPLOYER_SUCCESS:
+            return{
+                ...state,
+                user:action.payload,
+                errors: null,
+                connectedAs: "Employer",
+                isAuth: true
+            }
+
         case LOAD_USER_SUCCESS:
             return{
                 ...state,
                 user:action.payload,
-                errors: null
+                errors: null,
+                isAuth: true
             }
         case LOGIN_SUCCESS:
+            return{
+                ...state,
+                token:action.payload.token,
+                isAuth:true,
+                errors: null,
+                user:action.payload,
+                connectedAs: "Candidat"
+            }
         case REGISTER_Emp_SUCCESS:
             localStorage.setItem('token',action.payload.token)
             return{

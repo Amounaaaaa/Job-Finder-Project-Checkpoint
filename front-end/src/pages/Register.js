@@ -31,13 +31,7 @@ const Register = ({history}) => {
     const registerNow = (e) => {
         e.preventDefault() //utiliser avec le form et pour eviter le chargement de page
         dispatch(registerUser(info))
-        setInfo({
-            firstname: "",
-            lastname: "",
-            phone: "",
-            email: "",
-            password: "",
-        })
+
     }
     const handlechange = (e) => {
         setInfo({...info, [e.target.name]: e.target.value})
