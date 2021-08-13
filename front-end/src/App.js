@@ -12,25 +12,28 @@ import Header from "./components/componentsTemplates/Header";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getcategories, loadEmployer, loadUser} from "./actions/authActions";
-
-
-
-
-function App() {
+function App({history}) {
     const auth = useSelector(state => state.auth)
     //const categories = useSelector(state => state.auth.categories)
     const dispatch=useDispatch()
     useEffect(()=>{
         //dispatch(getcategories())
        // console.log("Cat ===>",categories)
+       if(auth.isAuth  && !auth.user){
+                dispatch(loadUser())    
+            }
+      
 
-        if ( auth.connectedAs==="Candidat") {
+
+
+        /**  if ( auth.connectedAs==="Candidate") {
             dispatch(loadUser())
         }else {
-            dispatch(loadEmployer())
-        }
+           // dispatch(loadEmployer())
+            console.log("null")
+        } */
 
-    },[]);
+    },[auth.isAuth]);
     return (
       <>
           {/* Fixed Pages*/}

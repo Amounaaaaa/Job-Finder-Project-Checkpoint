@@ -10,17 +10,18 @@ import moment from 'moment';
 const Inscription = ({history}) => {
 
     const [employer, setEmployer] = useState(false)
-    const [candidat, setCandidat] = useState(false)
+    const [candidate, setCandidat] = useState(false)
     const [selectedd, setSelectedd] = useState(true)
-    const [info, setInfo] = useState({
+   /* const [info, setInfo] = useState({
         firstname: "",
         lastname: "",
-        phone: "",
+        phone: "",:,:
         email: "",
         password: "",
-        datebirth:''
-    })
-    const [infoemp, setInfoemp] = useState({
+        datebirth:'',
+        connectedAs:'Candidate'
+    })*/
+    const [info, setInfo] = useState({
         firstname: "",
         lastname: "",
         phone: "",
@@ -28,14 +29,18 @@ const Inscription = ({history}) => {
         password: "",
         companyname: "",
         website: "",
-        selectedFile: ''
+        selectedFile: '',
+        connectedAs:'Employer',
+        datebirth:'',
     })
+    /* state error*/
     const [errors, setErrors] = useState(null)
     const auth = useSelector(state => state.auth)
     // Rester a l'ecoute si auth.isAuth est updated or not !
+
     useEffect(() => {
         if (auth.isAuth) {
-            history.push("/")
+            //history.push("/")
         }
         if (auth.errors) {
             setErrors(auth.errors)
@@ -48,10 +53,11 @@ const Inscription = ({history}) => {
     const phone = useRef()
     /////// Employer Form Action dispatch
     const registerEmp = (e) => {
-        e.preventDefault() //utiliser avec le form et pour eviter le chargement de page par le navigateur
-        dispatch(registerEmployer(infoemp))
+      //  e.preventDefault() //utiliser avec le form et pour eviter le chargement de page par le navigateur
+      //  dispatch(registerEmployer(info))
     }
-    const [value, setValue] = useState();/*
+    const [value, setValue] = useState();
+    /*
 Get date from datePicker start
 */
    /* var momentObj = moment(value, 'MM-DD-YYYY');
@@ -59,28 +65,30 @@ Get date from datePicker start
     console.log("date", momentString)*/
     const registerNow = (e) => {
         e.preventDefault() //utiliser avec le form et pour eviter le chargement de page
-        dispatch(registerUser(info))
+        dispatch(registerUser(info,history))
     }
     /*
 Get date from datePicker end
 */
     //handlechangeemp
-    const handlechangeemp = (e) => {
+    /*const handlechangeemp = (e) => {
         setInfoemp({...infoemp, [e.target.name]: e.target.value})
 
-    }
+    }*/
     const handlechange = (e) => {
         if (e.target.name === 'phone') {
-            (+e.target.value) !== NaN && setInfo({...info, [e.target.name]: e.target.value})
+            (+e.target.value) !== NaN &&
+            setInfo({...info, [e.target.name]: e.target.value})
             console.log(+e.target.value)
         } else
             setInfo({...info, [e.target.name]: e.target.value})
     }
     const handlechangeSelect = (e) => {
         //  console.log(e.target.value)
-        let role = e.target.value
-        console.log("user role is ", role)
-        if (role === "Employer") {
+        let connectedAs = e.target.value
+        setInfo({...info,connectedAs:connectedAs})
+        console.log("connectedAs ", connectedAs)
+        if (connectedAs === "Employer") {
             // console.log("vous ete demande l'inscrit comme Employer !")
             setEmployer(true)
             setCandidat(false)
@@ -89,27 +97,22 @@ Get date from datePicker end
             setCandidat(true)
             setEmployer(false)
             setSelectedd(false)
-
             // console.log("vous ete demande l'inscrit comme Candidat !")
-
         }
     }
     return (
         <div>
             <Container>
-                <Row>
-                    {selectedd && <form style={{
-                        width: "672px", display: 'block',
-                        margin: '0 auto'
-                    }} className="form-signin">
+                <Row style={{boxShadow: '0 0 98px 6px rgba(0, 0, 0, 0.2)'}}>
+                    {selectedd && <form style={{  width: "672px", display: 'block', margin: '0 auto' }} className="form-signin">
                         <h2 className="form-signin-heading">Registration</h2>
                         <div className="form-group">
                             <h5 style={{color: "#0f6674"}}>Registration As long as</h5>
                             <select onChange={handlechangeSelect} className="form-select form-select-lg mb-3"
                                     aria-label=".form-select-lg example">
                                 <option selected>Choose the type of account</option>
-                                <option value="Employer">Employer</option>
-                                <option value="Candidat">Canditat</option>
+                                <option     value="Employer">Employer</option>
+                                <option     value="Candidate">Candidate</option>
                             </select>
                         </div>
                     </form>}
@@ -117,11 +120,12 @@ Get date from datePicker end
             </Container>
             <Container style={{width: '800px', marginTop: '100px', background: '#e8e8e4'}}>
 
-                {/*---------------------Candidat  form Start ---------------*/}
-                {candidat && <Row>
+                {/*---------------------  Candidate  form Start ---------------*/}
+
+                {candidate && <Row>
                     <div className="w3-container">
                     </div>
-                    <form onSubmit={registerNow} className="w3-container w3-card-4">
+                    <form  onSubmit={registerNow}   style={{boxShadow: '0 0 98px 6px rgba(0, 0, 0, 0.2)'}}  className="w3-container w3-card-4">
                         <br></br><br></br>
                         {errors && errors.map(el => <span style={{color: 'red'}}> {el.msg}</span>)}
                         <br></br>
@@ -132,7 +136,7 @@ Get date from datePicker end
                             style={{color: 'red'}}> * &nbsp; &nbsp;</span> &nbsp;&nbsp;  </label>
                         <input onFocus={() => setErrors(null)} value={info.datebirth} required name="datebirth" required
                                type="date"
-                               className="form-control "
+                               className="form-control"
                                id="exampleinput" aria-describedby="emailHelp"
                                placeholder="Enter First name"
                                onChange={handlechange}/><br></br>
@@ -173,11 +177,8 @@ Get date from datePicker end
                                placeholder="Enter your phone number" value={info.phone}
                                onChange={handlechange}/><br></br>
                         <FileBase type="file" multiple={false} onDone={({base64}) => setInfo({...info, selectedFile: base64})}></FileBase>
-
                         <button className="custom-btn btn-1">Save now</button>
-                        <br></br>
-                        <br></br>
-                        <br></br>
+                        <br></br><br></br><br></br>
                     </form>
                 </Row>}
                 {/*--------------------------------Candidate  form End------------------------ */}
@@ -185,7 +186,7 @@ Get date from datePicker end
                 {employer && <Row>
                     <div className="w3-container">
                     </div>
-                    <form onSubmit={registerEmp} className="w3-container w3-card-4">
+                    <form style={{boxShadow: '0 0 50px 6px rgba(1, 0, 0, 0.2)'}} onSubmit={registerNow} className="w3-container w3-card-4">
                         <br></br><br></br>
                         {/*{errors? errors.map(el=><Alert variant="danger"> {el.msg}</Alert> ) : null}*/}
                         {errors && errors.map(el => <span style={{color: 'red'}}> {el.msg}</span>)}
@@ -197,44 +198,44 @@ Get date from datePicker end
                             style={{color: 'red'}}> * &nbsp; &nbsp;</span> &nbsp; &nbsp;  </label>
                         <input required name="firstname" required type="text" className="form-control "
                                aria-describedby="emailHelp"
-                               placeholder="Enter First name" onChange={handlechangeemp}/><br></br>
+                               placeholder="Enter First name" onChange={handlechange}/><br></br>
                         <div className="valid-feedback">Valid.</div>
                         <div className="invalid-feedback">Please fill out this field.</div>
 
                         <label className="w3-text-blue">Last Name <span
                             style={{color: 'red'}}>*</span>  &nbsp; &nbsp;  </label>
                         <input name="lastname" required type="text"
-                               className="form-control" placeholder="Enter Last name" onChange={handlechangeemp}/>
+                               className="form-control" placeholder="Enter Last name" onChange={handlechange}/>
                         <br></br>
                         <label className="w3-text-blue">Email <span style={{color: 'red'}}>*</span>  &nbsp; &nbsp;
                         </label>
                         <input name="email" required type="email"
                                className="form-control"
-                               placeholder="Enter your email" onChange={handlechangeemp}/><br></br>
+                               placeholder="Enter your email" onChange={handlechange}/><br></br>
                         <label className="w3-text-blue">Password <span
                             style={{color: 'red'}}>*</span>  &nbsp; &nbsp;  </label>
                         <input name="password" required type="password"
                                className="form-control"
                                placeholder="Enter password"
-                               onChange={handlechangeemp}/><br></br>
+                               onChange={handlechange}/><br></br>
 
                         <label className="w3-text-blue">Phone <span style={{color: 'red'}}>*</span>  &nbsp; &nbsp;
                         </label>
                         <input name="phone" required type="text"
                                className="form-control" placeholder="Enter your phone number"
-                               onChange={handlechangeemp}/><br></br>
+                               onChange={handlechange}/><br></br>
                         <label className="w3-text-blue">Company Name <span
                             style={{color: 'red'}}>*</span>  &nbsp; &nbsp;
                         </label>
                         <input name="companyname" required type="text"
                                className="form-control" placeholder="Enter company name"
-                               onChange={handlechangeemp}/><br></br>
+                               onChange={handlechange}/><br></br>
                         <label className="w3-text-blue">website <span style={{color: 'red'}}>*</span>  &nbsp; &nbsp;
                         </label>
                         <input name="website" required type="text"
                                className="form-control" placeholder="Enter website"
-                               onChange={handlechangeemp}/><br></br>
-                        <FileBase type="file" multiple={false} onDone={({base64}) => setInfoemp({...infoemp, selectedFile: base64})}
+                               onChange={handlechange}/><br></br>
+                        <FileBase type="file" multiple={false} onDone={({base64}) => setInfo({...info, selectedFile: base64})}
 
                         />
                         <button className="custom-btn btn-1">Save now</button>

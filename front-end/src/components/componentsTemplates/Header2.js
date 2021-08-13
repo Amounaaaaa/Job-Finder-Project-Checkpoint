@@ -13,14 +13,12 @@ import Home from "../../pages/Home";
 import {useDispatch, useSelector} from "react-redux";
 import {logoutUser} from "../../actions/authActions";
 
-const Header = () => {
+const Header2 = () => {
     const dispatch = useDispatch()
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const auth = useSelector(state => state.auth)
-
-
     return (
         <div>
             {/*preloader start */}
@@ -37,6 +35,7 @@ const Header = () => {
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 {/*// <!-- Navbar brand -->*/}
                                 <div className="col-lg-3 col-md-2">
+                                     {/* Logo */}
                                     <div className="logo">
                                         <a href="index.html"/>
                                         <img src="assets/img/logo/logo.png" alt=""/>
@@ -44,19 +43,28 @@ const Header = () => {
                                 </div>
                                 {/*   -------------------------------------------- Home  Routes Start --------------------------------------------- */}
 
-                                {/*<Router>*/}
-                                <div className="col-lg-9 col-md-9">
-                                    <div className="menu-wrapper">
-                                        <div className="main-menu">
-                                            <nav className="d-none d-lg-block">
-                                                <ul  style={{marginTop:"50px"}} id="navigation">
-                                                    <Link to="/"><a href="#"  className="btn head-btn1">Home</a></Link>
-                                                    <Link to="/cv"><a href="#"  className="btn head-btn1">CreateCV</a></Link>
-                                                    <Link to="/ranking">
-                                                        <a href="#"  className="btn head-btn1">Ranking</a></Link>
+                                   {/*<Router>*/}
+                                   <div className="col-lg-9 col-md-9">
+                  <div className="menu-wrapper">
+                    {/* Main-menu */}
+                    <div className="main-menu">
+                      <nav className="d-none d-lg-block">
+                        <ul id="navigation">
+                        <Link to="/"><a href="#"  className="btn head-btn1">Offres</a></Link>
+                        <Link to="/cv"><a href="#"  className="btn head-btn1">CreateCV</a></Link>
+                        <Link to="/ranking"><a href="#"  className="btn head-btn1">Ranking</a></Link>
+                          <li>
+                              <a href="#">Page</a>
+                            <ul className="submenu">
+                              <li><a href="blog.html">Blog</a></li>
+                              <li><a href="single-blog.html">Blog Details</a></li>
+                              <li><a href="elements.html">Elements</a></li>
+                              <li><a href="job_details.html">job Details</a></li>
+                            </ul>
+                          </li>
 
-                                                    {/*///////////////////// Route condionnel Start (id user connecté ou nn !:) ) ////////////////*/}
-                                                    <div className=" d-none f-right d-lg-block">
+  {/*///////////////////// Route condionnel Start (user connecté ou nn !:) ) ////////////////*/}
+                                                    
                                                         {auth.isAuth ? (
                                                             <>
                                                                 {/*<Link to="/profile"><a href="#"*/}
@@ -82,13 +90,22 @@ const Header = () => {
                                                             </>
                                                         )
                                                         }
-                                                    </div>
+                                                   
                                                     {/*///////////////////// Route condionnel End (id user connecté ou nn !:) ) ////////////////*/}
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                    </div>
+                                              
+                                               
+                        </ul>
+                      </nav>
+                    </div>          
+                    {/* Header-btn */}
+                   
+                    </div>
                                 </div>
+
+                                {/* Mobile Menu */}
+                                <div className="col-12">
+                                                <div className="mobile_menu d-block d-lg-none" />
+                                                </div>
                                 {/*   -------------------------------------------- Home  Routes End --------------------------------------------- */}
                             </div>
                             {/*// <!-- Collapsible wrapper -->*/}
@@ -110,7 +127,7 @@ const Header = () => {
 
 
                                 {/*// <!-- Avatar -->*/}
-                                { auth.isAuth && auth.user &&
+                                { auth.isAuth &&
 
                                     <a
                                     class="dropdown-toggle d-flex align-items-center hidden-arrow"
@@ -134,18 +151,12 @@ const Header = () => {
                     </nav>
                     {/*// <!-- Navbar -->*/}
                 </div>
-                <div className="header-area header-transparrent">
-                    <div className="headder-top header-sticky">
-                        <div className="container">
-                            <div className="row align-items-center">
-                                <div className="col-lg-3 col-md-2">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+                        
+                
             </header>
         </div>
     )
 }
-export default Header
+
+export default Header2

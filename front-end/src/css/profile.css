@@ -7,6 +7,23 @@
     width: 25px;
     height: 25px;
 }
+.container {
+    flex: 1;
+    padding: 20
+  }
+
+
+  #main {
+    width: 100px;
+    height: 200px;
+   
+    display: flex;
+  }
+  
+  #main h6 {
+    -ms-flex: 1;  /* IE 10 */  
+    flex: 1;
+  }
 
 
 

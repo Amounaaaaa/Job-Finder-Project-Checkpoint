@@ -29,16 +29,18 @@ ReactDOM.render(
                    <PrivateRoute exact path="/uploadCv" component={UploadCv} />
                    <PrivateRoute exact path="/profile" component={Profile} />
                    {/*<Route exact path="/shareexperience" component={TestimonialShareExperince} />*/}
-                   <Route exact path="/" component={App} />
-                   <Route exact path="/contact" component={Contact} />
-                   <Route exact path="/ranking" component={Rankings} />
-                   <Route exact path="/register" component={Register} />
+                   <Route exact path="/"            component={App} />
+                   <Route exact path="/contact"     component={Contact} />
+                   <Route exact path="/ranking"     component={Rankings} />
+                   <Route exact path="/register"    component={Register} />
                    <Route exact path="/inscription" component={Inscription} />
-                   <Route exact path="/login"  component={Login} />
-                   <Route exact path="/profile" component={Profile} />
-                   <Route exact path="/date" component={Daterr} />
-                   <PrivateRoute  exact path="/cv" component={CreateCV} />
-                   <Route path="/categorie/:id" render={(props)=> <Posts{...props}  />}></Route>
+                   <Route exact path="/login"       component={Login} />
+                    {/** <Route exact path="/profile"     component={Profile} /> */}   
+                   <Route exact path="/date"        component={Daterr} />
+                   <PrivateRoute  exact path="/cv"  component={CreateCV} />
+                   <Route path="/categorie/:id"     render={(props)=> <Posts{...props}  />}></Route>
+                    {/*props: params,history... : params pour recuperer id 1*/}
+
                </Switch>
            </BrowserRouter>
        </Provider>

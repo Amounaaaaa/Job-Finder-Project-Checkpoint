@@ -23,7 +23,7 @@ const ContainerC = () => {
 
 {/** Ours Services Start ! */}
 {/*     <OurService></OurService>*/}
-           <Categorie></Categorie>
+ <Categorie></Categorie>
 {/** Ours Services End ! */}
 
 {/** Depload Cv start  ! */}

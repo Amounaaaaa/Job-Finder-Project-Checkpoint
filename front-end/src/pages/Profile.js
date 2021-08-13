@@ -8,11 +8,11 @@ import moment from "moment"
 const Profile = () => {
     const auth=useSelector(state=>state.auth)
     const dispatch=useDispatch()
-    const Hello=()=>{
-        console.log("hello ..................")
-    }
+    // const Hello=()=>{
+    //     console.log("hello ..................")
+    // }
     useEffect(()=>{
-        dispatch(loadUser())
+       dispatch(loadUser())
     },[]);
 
     return (
@@ -21,42 +21,40 @@ const Profile = () => {
                 <div>
                     <div>
                         <div className="container1">
-                            <div className="all flex-row">
+                            { auth.user && <div className="all flex-row">
                                 <div className="menu flex-column">
-
-
-
                                     <div className="container">
-                                        <img  style={{boxShadow: '0 0 98px 6px rgba(0, 0, 0, 0.2)',
-                                            borderRadius: '50%'
+                                        <br></br>
+                                        <br></br>
+                                        {/* image profile  start  -------------*/}
+                                        <img style={{
+                                                     boxShadow: '0 0 98px 6px rgba(0, 0, 0, 0.2)',
+                                                     borderRadius: '50%',
+                                                     width:'142px'
                                         }}
-                                              src={auth.user.selectedFile}/>
+                                             src={auth.user.selectedFile}/>
+                                        {/* image profile  End  -------------*/}
                                         {/* camera icon start  -------------*/}
-                                        <div style={{marginLeft: '10px'}}>
-                                            <i style={{boxShadow: '0 0 98px 6px rgba(0, 0, 0, 0.2)',
-                                                borderRadius: '50%'
-                                            }}
-                                                onClick={console.log('cc')} className="fa fa-camera-retro fa-2x"></i>
-                                        </div>
+                                        {/*<div style={{marginLeft: '10px'}}>*/}
+                                        {/*    <i style={{*/}
+                                        {/*        boxShadow: '0 0 98px 6px rgba(0, 0, 0, 0.2)',*/}
+                                        {/*        borderRadius: '50%'*/}
+                                        {/*    }}*/}
+                                        {/*       onClick={console.log('cc')} className="fa fa-camera-retro fa-2x"></i>*/}
+                                        {/*</div>*/}
                                         {/* camera icon start  -----------*/}
                                     </div>
                                     <br></br><br></br><br></br><br></br>
-
                                     <div className="profil-info">
                                         {/* online icon here */}
                                         {/*<img style={{'width':'31px'}} src={"/assets/img/logo/online.jpeg"}/>*/}
                                         {/* online icon here end -----------*/}
-
                                         <link href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
                                               rel="stylesheet"/>
-
-
-
                                         <h2 className="name">{auth.user.lastname}</h2>
                                         <h2 className="name">{auth.user.firstname}</h2>
-
                                         <h2 className="name">{auth.user.email}</h2>
-                                        <h2 className="name">{moment(auth.user.datebirth).subtract(10, 'days').calendar()}</h2>
+                                        <h2 className="name">{moment(auth.user.datebirth).format('LL')}</h2>
                                         <div className="numbers">
                                             <div className="post">
                                                 <p>Post</p>
@@ -119,7 +117,7 @@ const Profile = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>}
                             <div className="right-page">
                                 <div className="top-bar">
                                     <div className="form has-search">
@@ -153,32 +151,31 @@ const Profile = () => {
                                 <hr className="hr-new"/>
                                     <div className="right-of-page">
                                         <div className="right-middle">
-                                            <div className="featured">
-                                                <div className="featured-header">
-                                                    <h2 className="featured-stories"> Academic training</h2>
-                                                    <button className="button popular-stor"> Popular Stories</button>
-                                                </div>
-                                                <div className="featured-body">
-                                                    <div className="galery-wrapper">
-                                                        <div className="img-galery">
-                                                            <img
-                                                                src="https://images.unsplash.com/photo-1562447279-69402cb4587d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60"/>
-                                                        </div>
-                                                        <div className="img-galery">
-                                                            <img
-                                                                src="https://images.unsplash.com/photo-1495954484750-af469f2f9be5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60"/>
-                                                        </div>
-                                                        <div className="img-galery">
-                                                            <img
-                                                                src="https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60"/>
-                                                        </div>
-                                                        <div className="img-galery">
-                                                            <img
-                                                                src="https://images.unsplash.com/photo-1561363702-e07252da3399?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            {/*<div className="featured">*/}
+                                            {/*    <div className="featured-header">*/}
+                                            {/*        <h2 className="featured-stories"> Academic training</h2>*/}
+                                            {/*        <button className="button popular-stor"> Popular Stories</button>*/}
+                                            {/*    </div>*/}
+                                            {/*    <div className="featured-body">*/}
+                                            {/*        <div className="galery-wrapper">*/}
+                                            {/*            <div className="img-galery">*/}
+                                            {/*                <img src={"assets/img/angular.png"}/>*/}
+                                            {/*            </div>*/}
+                                            {/*            <div className="img-galery">*/}
+                                            {/*                <img src={"assets/img/angular.png"}/>*/}
+                                            {/*            </div>*/}
+                                            {/*            <div className="img-galery">*/}
+                                            {/*                <img src={"assets/img/expressjs.png"}/>*/}
+                                            {/*            </div>*/}
+                                            {/*            <div className="img-galery">*/}
+                                            {/*                <img src={"assets/img/symfony.png"}/>*/}
+                                            {/*            </div>*/}
+                                            {/*            <div className="img-galery">*/}
+                                            {/*                <img src={"assets/img/node.jpg"}/>*/}
+                                            {/*            </div>*/}
+                                            {/*        </div>*/}
+                                            {/*    </div>*/}
+                                            {/*</div>*/}
                                             <div className="featured">
                                                 <div className="featured-header">
                                                     <h2 className="featured-stories"> Latest Feed</h2>
@@ -194,36 +191,32 @@ const Profile = () => {
                                                 <div className="featured-body">
                                                     <div className="galery-wrapper">
                                                         <div className="img-galery">
-                                                            <img
-                                                                src="https://images.unsplash.com/photo-1426543881949-cbd9a76740a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60"/>
+                                                            <img src={"/assets/img/angular.png"}/>
                                                         </div>
                                                         <div className="img-galery">
-                                                            <img
-                                                                src="https://images.unsplash.com/photo-1532347922424-c652d9b7208e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60"/>
+
+                                                            <img src={"/assets/img/angular.png"}/>
                                                         </div>
                                                         <div className="img-galery">
-                                                            <img
-                                                                src="https://images.unsplash.com/photo-1414609245224-afa02bfb3fda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60"/>
+
+                                                            <img src={"/assets/img/angular.png"}/>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="last-body">
                                                     <div className="galery-wrapper">
                                                         <div className="img-galery">
-                                                            <img
-                                                                src="https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60"/>
+                                                            <img src={"/assets/img/angular.png"}/>
                                                         </div>
                                                         <div className="img-galery">
-                                                            <img
-                                                                src="https://images.unsplash.com/photo-1527212986666-4d2d47a80d5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60"/>
+                                                            <img src={"/assets/img/angular.png"}/>
                                                         </div>
                                                         <div className="img-galery">
-                                                            <img
-                                                                src="https://images.unsplash.com/photo-1505158498176-0150297fbd7d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60"/>
+                                                            <img src={"/assets/img/angular.png"}/>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className="loader"></div>
+                                                {/*<div className="loader"></div>*/}
                                             </div>
                                         </div>
                                         <div className="last-right">

@@ -14,16 +14,24 @@ import {
 } from './types'
 import axios from "axios";
 import setTocken from "../setTocken";
-export const registerUser=(info)=>dispatch=>{
+export const registerUser=(info,history)=>dispatch=>{
+ 
     axios.post('/register',info)
-        .then(res=>dispatch({
+        .then(res=>{
+            
+            dispatch({
             type:REGISTER_SUCCESS,
             payload:res.data
-        }))
-        .catch(err=>dispatch({
+        })
+        history.push('/')
+    })
+        .catch(err=>{
+      
+            dispatch({
             type:REGISTER_FAIl,
             payload:err.response.data.errors,
-        }))
+        })}
+        )
 }
 export const registerEmployer=(infoemp)=>dispatch=>{
     axios.post('/registeremployer',infoemp)
@@ -38,13 +46,18 @@ export const registerEmployer=(infoemp)=>dispatch=>{
 }
 
 ///////LOAD USER:
-export const loadUser=()=>dispatch=>{
+export const loadUser=(hsitory)=>dispatch=>{
     setTocken()
     axios.get('/login')
-        .then(res=>dispatch({
+        .then(res=>{
+            dispatch({
             type:LOAD_USER_SUCCESS,
-            payload:res.data
-        }))
+             payload:res.data
+        })
+        console.log("res====>",res)
+    }
+   
+        )
         .catch(err=>dispatch({
             type:LOAD_USER_FAIl,
             payload:err.response.data.errors

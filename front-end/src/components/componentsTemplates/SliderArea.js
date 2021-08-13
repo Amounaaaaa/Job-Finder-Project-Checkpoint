@@ -24,28 +24,14 @@ const SliderArea = () => {
                         <div className="row">
                             <div className="col-xl-8">
                                 <form action="#" className="search-box">
-                                    <div className="input-form">
-                                        <input type="text" placeholder="Job Tittle or keyword"/>
-                                    </div>
+                                   
                                     <div className="select-form">
                                         <div  style={{marginTop: '18px',
                                                      marginLeft: '27px'}}className="select-itms">
-                                           {/* <select name="select" id="select1">
-                                                <option value="">Location BD</option>
-                                                <option value="">Location PK</option>
-                                                <option value="">Location US</option>
-                                                <option value="">Location UK</option>
-                                            </select>*/}
-                                            <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-                                            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                                            </DropdownButton>
-
                                         </div>
                                     </div>
                                     <div className="search-form">
-                                        <a href="#">Find job</a>
+                                        <a href="#cat">Find job</a>
                                     </div>
                                 </form>
                             </div>

@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const authMiddleware = require('../helpers/authMiddlewar')
-const Categorie=require('../models/Categorie')
+const Categorie=require('../models/Category')
 const app=express()
 
 

@@ -2,6 +2,7 @@
 const jwt=require('jsonwebtoken')
 require('dotenv').config()
 
+
 /*export const authMiddlewar*/
     module.exports=(req,res,next)=>{
     let token=req.header('auth-token')

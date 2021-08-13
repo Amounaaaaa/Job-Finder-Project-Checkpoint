@@ -13,17 +13,18 @@ const PrivateRoute = ({component:Component,...rest}) => {
        // component est une props de privateRoute exemple :
       // <PrivateRoute exact path="/uploadCv" component={UploadCv} />
     const auth=useSelector(state=>state.auth)
+
         // state.auth=
        // -token(pin): null
-     // - user(pin): null
-    //  -isAuth(pin): false
-   //  -errors(pin): null
+      // - user(pin): null
+     //  -isAuth(pin): false
+    //  -errors(pin): null
     return (
-        // render ou component(tnejim t3adi fihe props) : deux possibilités avec le react-router
+        // render (ou component : nn je pense ) (tnejim t3adi fihe props) : deux possibilités avec le react-router
        <Route {...rest}
               render={props=>!auth.isAuth?
-                  <Redirect to="/login"  /> :
-                  <Component {...props}/>}>
+                  <Redirect to="/login"  /> :   <Component {...props}/>}>
+                
 
        </Route>
     )
